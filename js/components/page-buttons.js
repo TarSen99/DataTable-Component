@@ -1,4 +1,4 @@
-import Component from "../component.js";
+import Component from '../component.js';
 
 export default class PageButtons extends Component {
   constructor({ element }) {
@@ -8,16 +8,16 @@ export default class PageButtons extends Component {
     this.maxPage = 0;
     this.buttons = [];
 
-    this.on("click", "[data-page]", event => {
-      let button = event.target.closest("[data-page]");
+    this.on('click', '[data-page]', event => {
+      let button = event.target.closest('[data-page]');
 
       let currentPage = +button.dataset.page;
 
       this._makeEvent(this._currentPage, currentPage);
     });
 
-    this.on("click", "[data-page-selector]", event => {
-      let button = event.target.closest("[data-page-selector]");
+    this.on('click', '[data-page-selector]', event => {
+      let button = event.target.closest('[data-page-selector]');
 
       let step = +button.dataset.pageSelector;
       let currentPage = this._currentPage;
@@ -38,12 +38,12 @@ export default class PageButtons extends Component {
     }
 
     this._currentPage = clickedPage;
-    this.emit("current-page-selected");
+    this.emit('current-page-selected');
   }
 
   resetCurrentPage() {
     this._currentPage = 0;
-    this.emit("current-page-selected");
+    this.emit('current-page-selected');
   }
 
   updatePageCount(pageCount) {
@@ -51,7 +51,7 @@ export default class PageButtons extends Component {
     this.buttons = [];
 
     for (let i = 0; i < this._pageCount; i++) {
-      this.buttons.push("");
+      this.buttons.push('');
     }
 
     this.maxPage = this.buttons.length;
@@ -68,8 +68,8 @@ export default class PageButtons extends Component {
           <button
            data-page="${page}"
            class="main_select-button ${
-            page === this._currentPage ? "main_select-button--active" : ""
-          }"
+             page === this._currentPage ? 'main_select-button--active' : ''
+           }"
           >
           ${page + 1}
           </button>
@@ -81,7 +81,8 @@ export default class PageButtons extends Component {
     const prevPage = -1;
     this._element.innerHTML = `
             <div class="main_select-buttons">
-               <span class="main_page-text">Current page is ${this._currentPage + 1}</span>
+               <span class="main_page-text">Current page is ${this
+                 ._currentPage + 1}</span>
                <ul class="main_select-buttons-list">
                     <li>
                         <button
@@ -95,7 +96,7 @@ export default class PageButtons extends Component {
                       .map((item, index) => {
                         return this._getPageButtonHTML(index);
                       })
-                      .join("")}
+                      .join('')}
                     
                     <li>
                         <button

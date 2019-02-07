@@ -1,24 +1,24 @@
-import Component from "../component.js";
+import Component from '../component.js';
 
 export default class PhoneCatalog extends Component {
   constructor({ element }) {
     super({ element });
     this._phones = [];
 
-    this.on('click', '[data-sort]', (event) => {
+    this.on('click', '[data-sort]', event => {
       let target = event.target.closest('[data-sort]');
       let orderBy = target.dataset.sort;
 
       this.emit('order-changed', orderBy);
     });
 
-    this.on('dblclick', '[data-description-edit="false"]', (event) => {
+    this.on('dblclick', '[data-description-edit="false"]', event => {
       let target = event.target.closest('[data-description-edit]');
 
       this._editCurrentField(target);
     });
 
-    this.on('click', '[data-btn]', (event) => {
+    this.on('click', '[data-btn]', event => {
       this._endEditing(event);
     });
 
@@ -39,7 +39,7 @@ export default class PhoneCatalog extends Component {
 
     let field = event.target.closest('[data-description-edit]');
 
-    if(btnValue === 'save') {
+    if (btnValue === 'save') {
       field.textContent = editingValue;
     }
 
@@ -48,10 +48,12 @@ export default class PhoneCatalog extends Component {
   }
 
   _editCurrentField(field) {
-    field.dataset.descriptionEdit= "true";
+    field.dataset.descriptionEdit = 'true';
     let currValue = field.textContent;
 
-    field.insertAdjacentHTML('beforeend', `
+    field.insertAdjacentHTML(
+      'beforeend',
+      `
         <div data-edit>
           <textarea class="edit"></textarea>
       
@@ -60,7 +62,8 @@ export default class PhoneCatalog extends Component {
             <button data-btn="cancel" class="edit_button">Cancel</button>
           </div>
         </div>
-    `);
+    `
+    );
 
     let input = field.querySelector('textarea');
 
@@ -88,11 +91,11 @@ export default class PhoneCatalog extends Component {
         <td>Description</td>
         <td data-sort="age">Age</td>
       </tr>
-      ${
-        this._phones.map(item => {
+      ${this._phones
+        .map(item => {
           return this._getListItemHTML(item);
-        }).join('')
-      }
+        })
+        .join('')}
       </table>
     `;
   }

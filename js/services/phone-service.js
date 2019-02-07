@@ -1,4 +1,5 @@
-const PHONES_URL = 'https://mate-academy.github.io/phone-catalogue-static/phones/phones.json';
+const PHONES_URL =
+  'https://mate-academy.github.io/phone-catalogue-static/phones/phones.json';
 
 const compareByAge = (a, b) => {
   if (a.age > b.age) {
@@ -19,20 +20,20 @@ const compareByName = (a, b) => {
 const PhoneService = {
   _loadDataFromServer(url) {
     return fetch(url)
-      .then((response) => {
+      .then(response => {
         return response.json();
-    })
-      .catch((error => console.log(error)));
+      })
+      .catch(error => console.log(error));
   },
 
   getAll({
-           orderValue = 'down',
-           orderBy = 'age',
-           filterValue = '',
-           phonesAmount = 5,
-           currentPage = 0
+    orderValue = 'down',
+    orderBy = 'age',
+    filterValue = '',
+    phonesAmount = 5,
+    currentPage = 0
   }) {
-    return this._loadDataFromServer(PHONES_URL).then((phones) => {
+    return this._loadDataFromServer(PHONES_URL).then(phones => {
       let filteredPhones = this._filterPhones(filterValue, phones);
       let orderedPhones = this._sort(filteredPhones, orderBy, orderValue);
 
@@ -49,7 +50,7 @@ const PhoneService = {
   },
 
   _sort(phones, orderBy, orderValue) {
-    if(orderValue === 'up') {
+    if (orderValue === 'up') {
       return phones.sort(PhoneService.sortTypes[orderBy]);
     }
 
@@ -71,8 +72,7 @@ const PhoneService = {
         return phone.name;
       }
     });
-  },
-
+  }
 };
 
 export default PhoneService;

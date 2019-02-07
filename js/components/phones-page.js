@@ -1,9 +1,9 @@
-import Component from "../component.js";
-import PhoneCatalog from "./phone-catalog.js";
-import PhoneFilter from "./phone-filter.js";
-import PhoneService from "../services/phone-service.js";
-import PageButtons from "./page-buttons.js";
-import PhoneAmount from "./phone-amount.js";
+import Component from '../component.js';
+import PhoneCatalog from './phone-catalog.js';
+import PhoneFilter from './phone-filter.js';
+import PhoneService from '../services/phone-service.js';
+import PageButtons from './page-buttons.js';
+import PhoneAmount from './phone-amount.js';
 
 export default class PhonesPage extends Component {
   constructor({ element }) {
@@ -24,10 +24,10 @@ export default class PhonesPage extends Component {
       orderBy: this._fiter.getOrderName(),
       filterValue: this._fiter.getFilterValue(),
       phonesAmount: this._phoneAmount.getAmountOfItems(),
-      currentPage: this._pageButtons.getCurrentPage(),
+      currentPage: this._pageButtons.getCurrentPage()
     };
 
-    PhoneService.getAll(options).then( ({currPagePhones, pageCount}) => {
+    PhoneService.getAll(options).then(({ currPagePhones, pageCount }) => {
       this._catalog.updatePhones(currPagePhones);
       this._pageButtons.updatePageCount(pageCount);
     });
@@ -58,7 +58,7 @@ export default class PhonesPage extends Component {
       element: this._element.querySelector('[data-element="phone-catalog"]')
     });
 
-    this._catalog.subscribe("order-changed", sortBy => {
+    this._catalog.subscribe('order-changed', sortBy => {
       this._fiter.updateOrderValue(sortBy);
       this.showPhones();
     });
@@ -69,7 +69,7 @@ export default class PhonesPage extends Component {
       element: this._element.querySelector('[data-element="find-input"]')
     });
 
-    this._fiter.subscribe("input-enter", () => {
+    this._fiter.subscribe('input-enter', () => {
       this._pageButtons.resetCurrentPage();
       this.showPhones();
     });
