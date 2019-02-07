@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 1280px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.header {
+    background-color: #122538;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.header__logo {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 300px;
+}
+
+.header__find-input {
+    display: inline-block;
+}
+
+.input {
+    font-family: 'Wire One', sans-serif;
+    width: 400px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 20px;
+    font-size: 25px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.input::placeholder {
+    font-style: italic;
+}
+
+.main {
+    color: #221f1f;
+}
+
+.main__phones-list {
+    width: 100%;
+}
+
+.main__phones-list {
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.main__phones-list, .main__phones-list tr{
+    border-top: 1px solid #eaeaea;
+}
+
+.main__phones-list img{
+    max-width: 100px;
+}
+
+.main__phones-list td {
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 50px;
+    text-align: center;
+}
+
+.main__phones-list tr:nth-child(1) td:nth-child(2):hover,
+.main__phones-list tr:nth-child(1) td:nth-child(4):hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.main_select-buttons {
+    margin-top: 30px;
+    padding-bottom: 15px;
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main_select-buttons-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main_select-button {
+    margin-right: 15px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: #00a046;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.main_select-button--active {
+    background-color: #a07500;
+}
+
+.main_page-text {
+    font-size: 20px;
+}
+
+.main_select-block {
+    position: absolute;
+    top: 17px;
+    z-index: 2;
+}
+
+.edit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+.edit_buttons {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    z-index: 2;
+}
+
+.edit_button {
+    padding: 5px;
+    outline: none;
+    border: none;
+    background-color: #00a046;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
